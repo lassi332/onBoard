@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevTrack UI Preview</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#3b82f6',
+              600: '#2563eb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased min-h-screen flex">
+
+  <!-- Left Sidebar -->
+  <aside class="w-64 border-r border-zinc-800 bg-zinc-900/50 flex flex-col justify-between p-4 shrink-0">
+    <div>
+      <!-- Workspace Switcher -->
+      <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-800/60 border border-zinc-700/50 mb-6 cursor-pointer hover:bg-zinc-800 transition">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow">
+            DT
+          </div>
+          <div>
+            <div class="font-semibold text-sm leading-tight text-white">Acme Corp</div>
+            <div class="text-xs text-zinc-400">Engineering</div>
+          </div>
+        </div>
+        <i data-lucide="chevrons-up-down" class="w-4 h-4 text-zinc-400"></i>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="space-y-1">
+        <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 px-2 mb-2">Projects</div>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md bg-zinc-800 text-white font-medium text-sm">
+          <i data-lucide="folder" class="w-4 h-4 text-blue-400"></i>
+          Platform Project
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800/40 text-sm transition">
+          <i data-lucide="smartphone" class="w-4 h-4"></i>
+          Mobile App
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800/40 text-sm transition">
+          <i data-lucide="server" class="w-4 h-4"></i>
+          API Core Service
+        </a>
+      </div>
+
+      <div class="space-y-1 mt-6">
+        <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 px-2 mb-2">Views</div>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md bg-blue-600/10 text-blue-400 font-medium text-sm border border-blue-500/20">
+          <i data-lucide="kanban" class="w-4 h-4"></i>
+          Kanban Board
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800/40 text-sm transition">
+          <i data-lucide="list" class="w-4 h-4"></i>
+          List View
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800/40 text-sm transition">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          Activity Log
+        </a>
+      </div>
+    </div>
+
+    <!-- User Profile Footer -->
+    <div class="pt-4 border-t border-zinc-800 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center font-bold text-xs text-white">
+          LD
+        </div>
+        <div>
+          <div class="text-sm font-medium text-white leading-tight">Lakshya</div>
+          <div class="text-xs text-zinc-400">Admin</div>
+        </div>
+      </div>
+      <button class="text-zinc-400 hover:text-zinc-200">
+        <i data-lucide="log-out" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col min-w-0">
+    
+    <!-- Top Header -->
+    <header class="h-16 border-b border-zinc-800 px-6 flex items-center justify-between bg-zinc-900/30">
+      <div class="flex items-center gap-4 flex-1 max-w-lg">
+        <div class="relative w-full">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"></i>
+          <input 
+            type="text" 
+            placeholder="Search issues, tags, or keys (e.g. DEV-102)..."
+            class="w-full bg-zinc-900 border border-zinc-800 rounded-lg pl-9 pr-4 py-1.5 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-blue-500"
+          >
+        </div>
+      </div>
+
+      <!-- Filters & Actions -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300">
+          <span>Priority:</span>
+          <span class="text-blue-400">All</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300">
+          <span>Assignee:</span>
+          <span class="text-blue-400">All</span>
+        </div>
+        <button onclick="openModal()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium shadow-md transition">
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          New Issue
+        </button>
+      </div>
+    </header>
+
+    <!-- Kanban Board Container -->
+    <main class="flex-1 p-6 overflow-x-auto bg-zinc-950">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h1 class="text-xl font-bold text-white">Platform Project</h1>
+          <p class="text-sm text-zinc-400">Core engineering sprint & task backlog</p>
+        </div>
+      </div>
+
+      <!-- 4 Columns Grid -->
+      <div class="grid grid-cols-4 gap-5 min-w-[1000px]">
+        
+        <!-- Column 1: Backlog -->
+        <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-3 flex flex-col max-h-[calc(100vh-180px)]">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800 mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-zinc-500"></span>
+              <h3 class="text-sm font-semibold text-zinc-200">Backlog</h3>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-mono font-medium">3</span>
+          </div>
+
+          <div class="space-y-3 overflow-y-auto pr-1">
+            <!-- Card -->
+            <div onclick="openModal()" class="p-3.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:shadow-lg transition cursor-pointer space-y-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-zinc-400">DEV-142</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-red-500/10 text-red-400 border border-red-500/20">Urgent</span>
+              </div>
+              <p class="text-sm font-medium text-zinc-100">Fix API rate limit headers on client sync</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">Backend</span>
+                <div class="w-6 h-6 rounded-full bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center">AL</div>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div onclick="openModal()" class="p-3.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:shadow-lg transition cursor-pointer space-y-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-zinc-400">DEV-140</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-zinc-700/50 text-zinc-400">Low</span>
+              </div>
+              <p class="text-sm font-medium text-zinc-100">Update footer documentation links</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">Docs</span>
+                <div class="w-6 h-6 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center">LD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: To Do -->
+        <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-3 flex flex-col max-h-[calc(100vh-180px)]">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800 mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              <h3 class="text-sm font-semibold text-zinc-200">To Do</h3>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-mono font-medium">2</span>
+          </div>
+
+          <div class="space-y-3 overflow-y-auto pr-1">
+            <div onclick="openModal()" class="p-3.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:shadow-lg transition cursor-pointer space-y-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-zinc-400">DEV-138</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">Medium</span>
+              </div>
+              <p class="text-sm font-medium text-zinc-100">Write unit tests for authentication middleware</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">Testing</span>
+                <div class="w-6 h-6 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">MK</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: In Progress -->
+        <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-3 flex flex-col max-h-[calc(100vh-180px)]">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800 mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <h3 class="text-sm font-semibold text-zinc-200">In Progress</h3>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-mono font-medium">2</span>
+          </div>
+
+          <div class="space-y-3 overflow-y-auto pr-1">
+            <div onclick="openModal()" class="p-3.5 rounded-lg bg-zinc-900 border border-blue-500/40 shadow-lg shadow-blue-500/5 hover:border-blue-400 transition cursor-pointer space-y-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-blue-400 font-semibold">DEV-135</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-red-500/10 text-red-400 border border-red-500/20">Urgent</span>
+              </div>
+              <p class="text-sm font-medium text-zinc-100">Refactor Dashboard Kanban Drag & Drop UI</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">Frontend</span>
+                <div class="w-6 h-6 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center">LD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Done -->
+        <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-3 flex flex-col max-h-[calc(100vh-180px)]">
+          <div class="flex items-center justify-between pb-3 border-b border-zinc-800 mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h3 class="text-sm font-semibold text-zinc-200">Done</h3>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-mono font-medium">4</span>
+          </div>
+
+          <div class="space-y-3 overflow-y-auto pr-1">
+            <div onclick="openModal()" class="p-3.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition cursor-pointer space-y-2.5 opacity-80">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-zinc-400">DEV-128</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-500/10 text-emerald-400">Done</span>
+              </div>
+              <p class="text-sm font-medium text-zinc-300 line-through">Set up PostgreSQL schema & connection pool</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-xs text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">Database</span>
+                <div class="w-6 h-6 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center">LD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Interactive Issue Detail Modal -->
+  <div id="issueModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
+        <div class="flex items-center gap-2 text-sm text-zinc-400">
+          <span class="text-blue-400 font-semibold font-mono">DEV-135</span>
+          <span>/</span>
+          <span>Platform Project</span>
+        </div>
+        <button onclick="closeModal()" class="p-1 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-white transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="flex-1 overflow-y-auto p-6 grid grid-cols-3 gap-6">
+        
+        <!-- Left 2 Cols: Main Content -->
+        <div class="col-span-2 space-y-6">
+          <div>
+            <h2 class="text-xl font-bold text-white mb-2">Refactor Dashboard Kanban Drag & Drop UI</h2>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              We need to implement a snappy, modern Kanban view using React and Tailwind CSS. The column cards should update their status immediately via optimistic state updates and synchronize with the Express backend.
+            </p>
+          </div>
+
+          <!-- Comments Section -->
+          <div class="pt-4 border-t border-zinc-800 space-y-4">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Discussion (2)</h4>
+            
+            <div class="space-y-3">
+              <div class="flex gap-3">
+                <div class="w-7 h-7 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center shrink-0">MK</div>
+                <div class="bg-zinc-800/60 rounded-lg p-3 text-sm flex-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-semibold text-zinc-200 text-xs">Mia Chen</span>
+                    <span class="text-[11px] text-zinc-500">2 hours ago</span>
+                  </div>
+                  <p class="text-zinc-300">The drag-drop animation feels super smooth with Tailwind transitions!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- New Comment Box -->
+            <div class="flex gap-2 pt-2">
+              <input type="text" placeholder="Write a comment..." class="flex-1 bg-zinc-800/80 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-blue-500">
+              <button class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition">Reply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 1 Col: Metadata Sidebar -->
+        <div class="space-y-4 border-l border-zinc-800 pl-6">
+          <div>
+            <label class="text-xs text-zinc-500 font-semibold block mb-1">Status</label>
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-sm font-medium text-amber-400">In Progress</div>
+          </div>
+          <div>
+            <label class="text-xs text-zinc-500 font-semibold block mb-1">Priority</label>
+            <div class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-sm font-medium text-red-400">Urgent</div>
+          </div>
+          <div>
+            <label class="text-xs text-zinc-500 font-semibold block mb-1">Assignee</label>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-sm text-zinc-200">
+              <div class="w-5 h-5 rounded-full bg-emerald-600 text-[10px] font-bold text-white flex items-center justify-center">LD</div>
+              <span>Lakshya</span>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs text-zinc-500 font-semibold block mb-1">Label</label>
+            <span class="inline-block px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-xs border border-blue-500/20 font-medium">Frontend</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    function openModal() {
+      document.getElementById('issueModal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('issueModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

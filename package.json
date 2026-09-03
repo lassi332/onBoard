@@ -1,0 +1,26 @@
+{
+  "name": "fullstack_learn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DevTrack - Full-Stack Issue & Sprint Tracker with React, TypeScript, PostgreSQL (Raw SQL)",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "db:migrate": "npm run db:migrate --prefix server"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "postgresql",
+    "sql",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC"
+}
