@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import { timeStamp } from 'console';
+import authRouters from './routes/auth.routes'
 
 dotenv.config();
 
@@ -18,6 +18,7 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+app.use('/api/auth', authRouters);
 
 app.get('/api/health', (req: Request, res: Response) => {
     res.status(200).json({
@@ -28,7 +29,7 @@ app.get('/api/health', (req: Request, res: Response) => {
 });
 
 app.listen(port, () =>{
-    console.log("server running on http://localhost:${PORT}");
+    console.log(`server running on http://localhost:${port}`);
 });
 
 
