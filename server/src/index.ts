@@ -3,7 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRouters from './routes/auth.routes'
-
+import workspaceRoutes from './routes/workspace.routes'; 
+import projectRoutes from './routes/project.routes'; 
 dotenv.config();
 
 const app = express();
@@ -19,6 +20,8 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRouters);
+app.use('/api/workspaces', workspaceRoutes);
+app.use('/api/projects', projectRoutes);
 
 app.get('/api/health', (req: Request, res: Response) => {
     res.status(200).json({
