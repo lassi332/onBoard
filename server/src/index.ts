@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import authRouters from './routes/auth.routes'
 import workspaceRoutes from './routes/workspace.routes'; 
 import projectRoutes from './routes/project.routes'; 
+import issueRoutes from './routes/issue.routes';
+
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,7 @@ app.use(cookieParser());
 app.use('/api/auth', authRouters);
 app.use('/api/workspaces', workspaceRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api', issueRoutes);
 
 app.get('/api/health', (req: Request, res: Response) => {
     res.status(200).json({
