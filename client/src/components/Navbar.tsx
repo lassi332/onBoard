@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import type { Workspace, Project } from '../api/client';
+import { Logo } from './Logo';
 import { 
   Building2, 
   Plus, 
   LogOut, 
-  ChevronDown, 
-  Sparkles
+  ChevronDown
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -44,14 +44,7 @@ export function Navbar({
         {/* Left Section: Brand & Workspace Switcher */}
         <div className="flex items-center gap-6">
           {/* Brand Logo */}
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-600/20 border border-violet-500/30 text-violet-400 font-bold">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-zinc-100">
-              onBoard
-            </span>
-          </div>
+          <Logo size="md" />
 
           <div className="h-5 w-px bg-zinc-800" />
 

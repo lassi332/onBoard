@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Logo } from '../components/Logo';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -31,16 +32,16 @@ export function LoginPage() {
       <div className="w-full max-w-md space-y-6 rounded-2xl border border-zinc-800 bg-zinc-900/70 p-8 backdrop-blur-xl shadow-2xl shadow-violet-950/20">
         
         {/* Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-violet-600/10 border border-violet-500/20 text-violet-400 font-bold text-xl">
-            ⚡
+        <div className="text-center space-y-3 flex flex-col items-center">
+          <Logo size="lg" showWordmark={false} />
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
+              Welcome to <span className="bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-transparent">onBoard</span>
+            </h1>
+            <p className="text-sm text-zinc-400 mt-1">
+              Sign in to access your projects and sprint boards
+            </p>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
-            Welcome to onBoard
-          </h1>
-          <p className="text-sm text-zinc-400">
-            Sign in to access your projects and sprint boards
-          </p>
         </div>
 
         {/* Error Notification */}
