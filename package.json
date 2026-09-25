@@ -12,7 +12,8 @@
     "dev:server": "npm run dev --prefix server",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
-    "db:migrate": "npm run db:migrate --prefix server"
+    "db:migrate": "npm run db:migrate --prefix server",
+    "db:seed": "npm run db:seed --prefix server"
   },
   "keywords": [
     "react",
