@@ -78,7 +78,16 @@ export async function getIssuesByProject(req: Request, res: Response){
             paramIdx++;
         }
         
-        sql += ` ORDER BY i.order_index ASC, i.created_at  DESC`;
+        sql += ` ORDER BY 
+            CASE i.priority
+                WHEN 'URGENT' THEN 1
+                WHEN 'HIGH' THEN 2
+                WHEN 'MEDIUM' THEN 3
+                WHEN 'LOW' THEN 4
+                ELSE 5
+            END ASC,
+            i.order_index ASC, 
+            i.created_at DESC`;
         
         const rows = await query(sql, params);
         

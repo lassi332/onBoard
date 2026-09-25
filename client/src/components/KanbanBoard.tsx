@@ -15,11 +15,20 @@ const COLUMNS: { id: Issue['status']; title: string; dotColor: string }[] = [
   { id: 'DONE', title: 'Done', dotColor: 'bg-emerald-400' },
 ];
 
+const PRIORITY_ORDER: Record<string, number> = {
+  URGENT: 1,
+  HIGH: 2,
+  MEDIUM: 3,
+  LOW: 4,
+};
+
 export function KanbanBoard({ issues, onUpdateStatus, onDeleteIssue }: KanbanBoardProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {COLUMNS.map((col) => {
-        const columnIssues = issues.filter((i) => i.status === col.id);
+        const columnIssues = issues
+          .filter((i) => i.status === col.id)
+          .sort((a, b) => (PRIORITY_ORDER[a.priority] || 5) - (PRIORITY_ORDER[b.priority] || 5));
 
         return (
           <div
