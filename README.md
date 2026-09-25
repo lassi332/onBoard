@@ -1,4 +1,4 @@
-# ⚡ onBoard — Full-Stack Issue & Sprint Tracker
+# onBoard — Full-Stack Issue & Sprint Tracker
 
 > A high-performance, multi-tenant issue and sprint tracking platform inspired by Linear and Jira. Built with **React 19, TypeScript, Tailwind CSS v4, Node.js/Express, and PostgreSQL (Raw SQL)**.
 
@@ -266,8 +266,3 @@ erDiagram
         TIMESTAMPTZ created_at
     }
 ```
-
----
-
-## 📄 License
-This project is licensed under the [ISC License](LICENSE).
